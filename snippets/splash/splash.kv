@@ -1,0 +1,13 @@
+#:import win kivy.core.window
+
+
+# root widget
+Widget:
+
+
+# splash widget
+<Splash>:
+    on_size: self.center = win.Window.center
+    Image:
+        source: root.source
+        size: win.Window.size

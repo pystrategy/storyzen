@@ -24,6 +24,7 @@ class SplashApp(App):
 
     def clear_splash(self, dt):
         self.root.remove_widget(self.splash)
+        self.presplash = self.splash = None
 
 
 if __name__ == '__main__':

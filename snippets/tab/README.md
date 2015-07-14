@@ -10,7 +10,7 @@ TabbedPanel
 ============
 
 Test of the widget TabbedPanel.
-'''
+'''python
 
 from kivy.app import App
 from kivy.uix.tabbedpanel import TabbedPanel

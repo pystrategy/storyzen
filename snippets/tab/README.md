@@ -4,13 +4,13 @@
 
 주의: `do_default_tab: False` 으로 기본탭 생성을 막아준다.
 
-```
+```python
 '''
 TabbedPanel
 ============
 
 Test of the widget TabbedPanel.
-'''python
+'''
 
 from kivy.app import App
 from kivy.uix.tabbedpanel import TabbedPanel

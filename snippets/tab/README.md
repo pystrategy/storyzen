@@ -2,7 +2,7 @@
 
 참고: [Kivy 도큐먼트 예제](http://kivy.org/docs/api-kivy.uix.tabbedpanel.html)
 
-![](./screenshot.png =100x20)
+![](screenshot.png =100x20)
 
 주의: `do_default_tab: False` 으로 기본탭 생성을 막아준다.
 

@@ -2,3 +2,4 @@
 .*.swp
 .ropeproject/
 .DS_Store
+*.sublime-workspace

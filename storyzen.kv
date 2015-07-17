@@ -1,0 +1,33 @@
+#:import win kivy.core.window
+
+[KoLabel@Label]:
+    text: ctx.text if hasattr(ctx, 'text') else ''
+    font_size: ctx.font_size if hasattr(ctx, 'font_size') else 12
+    font_name: 'fonts/NanumGothic.ttf'
+    markup: True
+
+<Splash>:
+    on_size: self.center = win.Window.center
+    Image:
+        source: root.source
+        size: win.Window.size
+
+<Main>:
+    TabbedPanel:
+        hide: True
+        do_default_tab: False
+
+        TabbedPanelItem:
+            text: '인물'
+            font_name: 'fonts/NanumGothic.ttf'
+
+        TabbedPanelItem:
+            text: '상황'
+            font_name: 'fonts/NanumGothic.ttf'
+
+        TabbedPanelItem:
+            text: '행위 '
+            font_name: 'fonts/NanumGothic.ttf'
+
+
+BoxLayout:

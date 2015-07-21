@@ -4,7 +4,7 @@ Kivy의 DropDown 객체는 자식 위젯을 품는 컨테이너 역할이다. �
 
 참고: [Kivy 도큐먼트 예제](http://kivy.org/docs/api-kivy.uix.dropdown.html)
 
-## 샘플 코드
+## 코드로 만들기
 
 - DropDown 인스턴스에 자식 위벳을 등록하고 있다.
 - 자식 위젯의 on_relase 이벤트를 DropDown의 select 이벤트로 연결해준다.
@@ -49,4 +49,57 @@ dropdown.bind(on_select=lambda instance, x: setattr(mainbutton, 'text', x))
 
 # App 인스턴스 만들지 않고 어플리케이션 실행
 runTouchApp(mainbutton)
+```
+
+
+## KV 파일로 만들기
+
+- `DropDown` 을 상속받아 CustomDropDown 을 만들고
+- 자식 위벳은 KV 파일에서 등록한다
+
+```
+Widget:
+
+<CustomDropDown>:
+    Button:
+        text: 'My first Item'
+        size_hint_y: None
+        height: 44
+        # 릴리즈시 select 이벤트를 호출
+        on_release: root.select('item1')
+    Label:
+        text: 'Unselectable item'
+        size_hint_y: None
+        height: 44
+        # Label에는 on_release가 없다
+    Button:
+        text: 'My second Item'
+        size_hint_y: None
+        height: 44
+        # 릴리즈시 select 이벤트를 호출
+        on_release: root.select('item2')
+```
+
+```python
+from kivy.uix.dropdown import DropDown
+from kivy.uix.button import Button
+from kivy.app import App
+
+
+class CustomDropDown(DropDown):
+    pass
+
+
+class DropDownApp(App):
+    def build(self):
+        dropdown = CustomDropDown()
+        mainbutton = Button(text='Hello', size_hint=(None, None))
+        mainbutton.bind(on_release=dropdown.open)
+        dropdown.bind(on_select=lambda instance, x: setattr(mainbutton,
+                      'text', x))
+        self.root.add_widget(mainbutton)
+
+
+if __name__ == "__main__":
+    DropDownApp().run()
 ```

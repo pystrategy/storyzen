@@ -57,6 +57,8 @@ runTouchApp(mainbutton)
 - `DropDown` 을 상속받아 CustomDropDown 을 만들고
 - 자식 위벳은 KV 파일에서 등록한다
 
+`dropdown.kv`
+
 ```
 Widget:
 
@@ -79,6 +81,8 @@ Widget:
         # 릴리즈시 select 이벤트를 호출
         on_release: root.select('item2')
 ```
+
+`dropdown.py`
 
 ```python
 from kivy.uix.dropdown import DropDown

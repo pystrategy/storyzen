@@ -10,7 +10,7 @@
             "name": "StoryZen Builder",
             "selector": "source.python",
             "shell_cmd": "/usr/local/bin/kivy main.py --size=400x650",
-            "working_dir": "${project_path:${folder}}",
+            "working_dir": "$file_path",
         }
     ]
 }

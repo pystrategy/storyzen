@@ -1,10 +1,12 @@
 #:import win kivy.core.window
+#:import TabbedPanelItem kivy.uix.tabbedpanel
 
-[KoLabel@Label]:
-    text: ctx.text if hasattr(ctx, 'text') else ''
-    font_size: ctx.font_size if hasattr(ctx, 'font_size') else 12
+<Label>:
     font_name: 'fonts/NanumGothic.ttf'
-    markup: True
+
+<Button>:
+    font_name: 'fonts/NanumGothic.ttf'
+
 
 <Splash>:
     on_size: self.center = win.Window.center
@@ -12,20 +14,31 @@
         source: root.source
         size: win.Window.size
 
+<FieldMainButton>:
+    pos: 100, 500
+    size_hint: None, None
+    width: 100
+    height: 40
+    text: '필드'
+    FieldDropDown:
+
+<Category@TabbedPanelItem>:
+    font_name: 'fonts/NanumGothic.ttf'
+    FloatLayout:
+        FieldMainButton:
+
 <Main>:
     TabbedPanel:
         hide: True
         do_default_tab: False
 
-        TabbedPanelItem:
+        Category:
             text: '인물'
-            font_name: 'fonts/NanumGothic.ttf'
 
-        TabbedPanelItem:
+        Category:
             text: '상황'
-            font_name: 'fonts/NanumGothic.ttf'
 
-        TabbedPanelItem:
+        Category:
             text: '행위 '
             font_name: 'fonts/NanumGothic.ttf'
 

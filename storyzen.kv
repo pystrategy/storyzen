@@ -1,31 +1,24 @@
 #:import win kivy.core.window
 #:import TabbedPanelItem kivy.uix.tabbedpanel
 
-<Label>:
-    font_name: 'fonts/NanumGothic.ttf'
-
-<Button>:
-    font_name: 'fonts/NanumGothic.ttf'
-
-
 <Splash>:
     on_size: self.center = win.Window.center
     Image:
         source: root.source
         size: win.Window.size
 
-<FieldMainButton>:
-    pos: 100, 500
+<HButton>:
+    font_name: 'fonts/NanumGothic.ttf'
+
+<DropDownBtn>:
     size_hint: None, None
-    width: 100
-    height: 40
-    text: '필드'
-    FieldDropDown:
+    width: '100dp'
+    height: '40dp'
 
 <Category@TabbedPanelItem>:
     font_name: 'fonts/NanumGothic.ttf'
     FloatLayout:
-        FieldMainButton:
+        Field
 
 <Main>:
     TabbedPanel:
@@ -40,7 +33,6 @@
 
         Category:
             text: '행위 '
-            font_name: 'fonts/NanumGothic.ttf'
 
 
 BoxLayout:

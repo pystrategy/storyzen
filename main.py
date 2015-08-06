@@ -2,11 +2,12 @@
 
 from kivy.app import App
 from kivy.uix.widget import Widget
+from kivy.uix.dropdown import DropDown
 from kivy.properties import StringProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.clock import Clock
 from kivy.uix.dropdown import DropDown
-from kivy.uix.button import Button
+from kivy.uix.button import Button as Button
 
 
 SHOW_SPLASH = False
@@ -19,27 +20,45 @@ class Splash(Widget):
     source = StringProperty(None)
 
 
-class FieldMainButton(Button):
-    def on_release(self):
-        print '----------'
-        print self.children
+class HButton(Button):
+    pass
 
 
-class FieldMainButton(Button):
+class DropDownBtn(HButton):
+    pass
+
+
+class DropDownSet(Widget):
     def __init__(self, **kwargs):
-        super(FieldMainButton, self).__init__(**kwargs)
+        super(DropDownSet, self).__init__(**kwargs)
+        # dropdown main button
+        self.mainbtn = HButton(text='---')
+        self.mainbtn.bind(on_release=self.main_click)
+        self.add_widget(self.mainbtn)
+
+        # dropdown
+        self.dropdown = DropDown()
+        self.dropdown.bind(on_select=lambda instance, x: setattr(self.mainbtn, 'text', x))
+        items = kwargs['items']
+
+        # dropdown item buttons
+        for item in items:
+            btn = DropDownBtn(text=item)
+            btn.bind(on_release=lambda btn: self.dropdown.select(btn.text))
+            self.dropdown.add_widget(btn)
+
+    def main_click(self, btn):
+        self.dropdown.open(btn)
 
 
-class FieldButton(Button):
+class Field(DropDownSet):
     def __init__(self, **kwargs):
-        super(FieldButton, self).__init__(**kwargs)
-
-
-class FieldDropDown(DropDown):
-    def __init__(self, **kwargs):
-        super(FieldDropDown, self).__init__(**kwargs)
-        mainbtn = FieldMainButton()
-        self.add_widget(mainbtn)
+        kwargs['items'] = [u'사람', u'영생', u'명예', u'권력']
+        super(Field, self).__init__(**kwargs)
+        self.mainbtn.size_hint = None, None
+        self.mainbtn.width = '100dp'
+        self.mainbtn.height = '40dp'
+        self.mainbtn.pos = 100, 500
 
 
 class Main(BoxLayout):

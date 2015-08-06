@@ -38,4 +38,3 @@ class TabbedPanelApp(App):
 if __name__ == '__main__':
     TabbedPanelApp().run()
 ```
-

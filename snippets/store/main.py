@@ -1,5 +1,4 @@
 from random import random
-from copy import deepcopy
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
@@ -38,7 +37,7 @@ class MyCanvas(BoxLayout):
     def load(self):
         self.clear()
         if store.exists('draws'):
-            self.draws = deepcopy(store.get('draws')['data'])
+            self.draws = list(store.get('draws')['data'])
         self.render()
 
     def clear(self):

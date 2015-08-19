@@ -104,29 +104,3 @@ BoxLayout:
         id: my_canvas
         size_hint_y: 9
 ```
-
-`dropdown.py`
-
-```python
-from kivy.uix.dropdown import DropDown
-from kivy.uix.button import Button
-from kivy.app import App
-
-
-class CustomDropDown(DropDown):
-    pass
-
-
-class DropDownApp(App):
-    def build(self):
-        dropdown = CustomDropDown()
-        mainbutton = Button(text='Hello', size_hint=(None, None))
-        mainbutton.bind(on_release=dropdown.open)
-        dropdown.bind(on_select=lambda instance, x: setattr(mainbutton,
-                      'text', x))
-        self.root.add_widget(mainbutton)
-
-
-if __name__ == "__main__":
-    DropDownApp().run()
-```

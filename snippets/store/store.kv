@@ -1,0 +1,22 @@
+#:kivy 1.4
+
+BoxLayout:
+    orientation: 'vertical'
+
+    BoxLayout:
+        size_hint_y: 1
+        Button:
+            text: 'Save'
+            on_press: my_canvas.save()
+
+        Button:
+            text: 'Load'
+            on_press: my_canvas.load()
+
+        Button:
+            text: 'Clear'
+            on_press: my_canvas.clear()
+
+    MyCanvas:
+        id: my_canvas
+        size_hint_y: 9

@@ -13,8 +13,6 @@ from kivy.uix.button import Button as Button
 SHOW_SPLASH = False
 SPLASH_TIME = 1.5
 
-FIELDS = [u'돈', u'사랑', u'영생', u'명예', u'권력']
-
 
 class Splash(Widget):
     source = StringProperty(None)
@@ -38,7 +36,8 @@ class DropDownSet(Widget):
 
         # dropdown
         self.dropdown = DropDown()
-        self.dropdown.bind(on_select=lambda instance, x: setattr(self.mainbtn, 'text', x))
+        self.dropdown.bind(on_select=lambda instance, x: setattr(self.mainbtn,
+                           'text', x))
         items = kwargs['items']
 
         # dropdown item buttons
@@ -49,16 +48,6 @@ class DropDownSet(Widget):
 
     def main_click(self, btn):
         self.dropdown.open(btn)
-
-
-class Field(DropDownSet):
-    def __init__(self, **kwargs):
-        kwargs['items'] = [u'사람', u'영생', u'명예', u'권력']
-        super(Field, self).__init__(**kwargs)
-        self.mainbtn.size_hint = None, None
-        self.mainbtn.width = '100dp'
-        self.mainbtn.height = '40dp'
-        self.mainbtn.pos = 100, 500
 
 
 class Main(BoxLayout):

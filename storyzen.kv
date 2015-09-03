@@ -7,32 +7,68 @@
         source: root.source
         size: win.Window.size
 
+<HLabel@Label>:
+    font_name: 'fonts/NanumGothic.ttf'
+
 <HButton>:
     font_name: 'fonts/NanumGothic.ttf'
 
 <DropDownBtn>:
-    size_hint: None, None
     width: '100dp'
     height: '40dp'
 
+
 <Category@TabbedPanelItem>:
     font_name: 'fonts/NanumGothic.ttf'
-    FloatLayout:
-        Field
+    name: ""
+    text: self.name
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            HButton:
+                id: dropMain
+                text: '---'
+
+            DropDown:
+                on_parent: self.dismiss()
+                DropDownBtn:
+                    text: '돈'
+                DropDownBtn:
+                    text: '사랑'
+                DropDownBtn:
+                    text: '영생'
+                DropDownBtn:
+                    text: '명예'
+                DropDownBtn:
+                    text: '권력'
+
+            BoxLayout:
+                orientation: 'vertical'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    HLabel:
+                        text: 'Bad'
+                    HLabel:
+                        text: 'Good'
+                Slider
+        HButton:
+            text: root.name + ' 모티프 선정'
+        HLabel:
+            text: '선택된 모티프'
+
 
 <Main>:
     TabbedPanel:
-        hide: True
         do_default_tab: False
+        size_hint: 1, .5
+        pos_hint: {'y': 0.5}
 
         Category:
-            text: '인물'
-
+            name: '인물'
         Category:
-            text: '상황'
-
+            name: '상황'
         Category:
-            text: '행위 '
-
+            name: '행위'
 
 BoxLayout:

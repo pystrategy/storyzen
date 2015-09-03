@@ -1,0 +1,42 @@
+#:kivy 1.4
+#:import Logger kivy.Logger
+#:import LoggerHistory kivy.logger.LoggerHistory
+
+
+<Root>:
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y: 2
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                text: "Trace"
+                on_press: Logger.trace("Trace Message!")
+            Button:
+                text: "Debug"
+                on_press: Logger.debug("Debug Message!")
+            Button:
+                text: "Info"
+                on_press: Logger.info("Info Message!")
+        BoxLayout
+            orientation: "horizontal"
+            Button:
+                text: "Warning"
+                on_press: Logger.warning("Warning Message!")
+            Button:
+                text: "Error"
+                on_press: Logger.error("Error Message!")
+            Button:
+                text: "Critical"
+                on_press: Logger.critical("Critical Message!")
+
+    Button:
+        size_hint_y: 2
+        text: "Logger History"
+        on_press: logtext.text = '\n'.join([h.msg for h in LoggerHistory.history][:10])
+
+    CodeInput:
+        id: logtext
+        size_hint_y: 6
+        text: ""
